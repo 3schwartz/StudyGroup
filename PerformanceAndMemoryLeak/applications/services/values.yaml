@@ -1,0 +1,36 @@
+replicaCount: 1
+
+extraLabels:
+  version: 1.0.0
+
+image:
+  repository: asp
+  pullPolicy: Never
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 8080
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+# probes:
+#   probeIntervalSeconds: 5
+#   probeTimeoutSeconds: 5
+#   failureThreshold: 6
+#   readinessProbe:
+#     path: /
+#   livenessProbe:
+#     path: /
+
+serviceAccount:
+  create: false
+
+nameOverride: ""
+fullnameOverride: ""

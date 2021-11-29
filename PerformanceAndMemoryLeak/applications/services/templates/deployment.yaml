@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "services.fullname" . }}
+  labels:
+    {{- include "services.labels" . | nindent 4 }}
+      {{- if .Values.extraLabels }}
+      {{- toYaml .Values.extraLabels | nindent 4 }}
+      {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "services.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "services.selectorLabels" . | nindent 8 }}
+          {{- if .Values.extraLabels }}
+          {{- toYaml .Values.extraLabels | nindent 8 }}
+          {{- end }}
+    spec:
+      serviceAccountName: {{ include "services.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          {{- range $name, $value := .Values.env }}
+          - name: {{ $name }}
+            value: {{ tpl ($value | toString) $ | quote }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: {{ .Values.probes.livenessProbe.path }}
+          #     port: http
+          #   periodSeconds: {{ .Values.probes.probeIntervalSeconds }}
+          #   timeoutSeconds: {{ .Values.probes.probeTimeoutSeconds }}
+          #   failureThreshold: {{ .Values.probes.failureThreshold }}
+          # readinessProbe:
+          #   httpGet:
+          #     path: {{ .Values.probes.readinessProbe.path }}
+          #     port: http
+          #   periodSeconds: {{ .Values.probes.probeIntervalSeconds }}
+          #   timeoutSeconds: {{ .Values.probes.probeTimeoutSeconds }}
+          #   failureThreshold: {{ .Values.probes.failureThreshold }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

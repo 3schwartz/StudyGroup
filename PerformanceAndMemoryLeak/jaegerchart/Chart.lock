@@ -1,0 +1,6 @@
+dependencies:
+- name: jaeger-all-in-one
+  repository: https://raw.githubusercontent.com/hansehe/jaeger-all-in-one/master/helm/charts
+  version: 0.1.5
+digest: sha256:d236fd6ea8ea4aae7aa0d16fc59f110f12a4d4b32fade3e4a53acb6a0edff973
+generated: "2021-11-29T21:19:50.4002406+01:00"

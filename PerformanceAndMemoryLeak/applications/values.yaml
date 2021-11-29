@@ -1,0 +1,12 @@
+tags:
+  services: true
+
+jaegerdot:
+  replicaCount: 1
+  extraLabels:
+    app: jaegerdot
+  image:
+    repository: jaegerdot
+  env:
+    OTEL_EXPORTER_JAEGER_AGENT_HOST: jaeger-jaeger-all-in-one
+    OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger-jaeger-all-in-one:14268
