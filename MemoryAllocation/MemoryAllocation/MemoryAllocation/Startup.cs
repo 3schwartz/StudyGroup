@@ -10,7 +10,7 @@ using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-namespace PerformanceandMemoryLeak
+namespace MemoryAllocation
 {
     public class Startup
     {
