@@ -1,0 +1,116 @@
+version: '3'
+
+networks:
+  default:
+    name: outbox
+
+services:
+  db:
+    container_name: postgres  
+    image: postgres:11
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      # - '127.0.0.1:5050:80'
+      - '8080:80'
+
+  zookeeper:
+    container_name: zookeeper
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  
+  kafka:
+    container_name: kafka 
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'
+      - '9093:9093'
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT      
+      - KAFKA_CFG_DELETE_TOPIC_ENABLE=true
+    depends_on:
+      - zookeeper      
+    command: 
+      - bash 
+      - -c 
+      - |
+        /opt/bitnami/scripts/kafka/run.sh &
+        /scripts/wait-for-kafka.sh
+        /scripts/create-topics.sh
+        sleep infinity    
+    volumes:
+      - ./scripts:/scripts
+
+  kowl:
+    # http://localhost:8090
+    image: quay.io/cloudhut/kowl:v1.4.0
+    container_name: kowl
+    restart: on-failure
+    hostname: kowl
+    volumes:
+    - ./scripts/config.yaml:/etc/kowl/config.yaml
+    ports:
+    - "8090:8080"
+    entrypoint: ./kowl --config.filepath=/etc/kowl/config.yaml
+    depends_on:
+      - kafka
+
+  jaeger:
+    # http://localhost:16686
+    container_name: jaeger
+    image: jaegertracing/all-in-one:1.29
+    ports:
+      - 5775:5775/udp
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 5778:5778
+      - 16686:16686
+      - 14250:14250
+      - 14268:14268
+      - 14269:14269
+      - 9411:9411
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: 9411
+
+  prometheus:
+    # http://localhost:9000
+    container_name: prometheus
+    image: prom/prometheus:v2.32.1
+    ports:
+      - 9000:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      # Used to persist data after restart
+      # - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+
+# volumes:
+#   # Used to persist data after restart
+#   prometheus-data:      

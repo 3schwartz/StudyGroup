@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outbox.Benchmark", "Outbox.Benchmark\Outbox.Benchmark.csproj", "{BFDEF618-F5A9-495E-B74A-05ACCF9F7091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outbox.Initializer", "Outbox.Initializer\Outbox.Initializer.csproj", "{39430FA6-A376-4392-AE89-FEA3693FF3A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outbox.Web", "Outbox.Web\Outbox.Web.csproj", "{6042717C-EC94-491C-9A12-EB6DB66123EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFDEF618-F5A9-495E-B74A-05ACCF9F7091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDEF618-F5A9-495E-B74A-05ACCF9F7091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDEF618-F5A9-495E-B74A-05ACCF9F7091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDEF618-F5A9-495E-B74A-05ACCF9F7091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39430FA6-A376-4392-AE89-FEA3693FF3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39430FA6-A376-4392-AE89-FEA3693FF3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39430FA6-A376-4392-AE89-FEA3693FF3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39430FA6-A376-4392-AE89-FEA3693FF3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6042717C-EC94-491C-9A12-EB6DB66123EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6042717C-EC94-491C-9A12-EB6DB66123EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6042717C-EC94-491C-9A12-EB6DB66123EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6042717C-EC94-491C-9A12-EB6DB66123EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
