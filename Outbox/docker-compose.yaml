@@ -106,7 +106,7 @@ services:
     ports:
       - 9000:9090
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ./scripts:/etc/prometheus
       # Used to persist data after restart
       # - prometheus-data:/prometheus
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
