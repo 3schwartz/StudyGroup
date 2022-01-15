@@ -29,6 +29,8 @@ Likewise, the sending to the message bus and deleting from the database.
 
 This is already given in the solution and in the project `Outbox.Benchmark`. This is were you can put your code when benchmarking against the simple one.
 
+Remember to run as `Release`.
+
 # Getting started
 Within the main folder a `docker-compose.yml` file is given. This will start up
 -	Postgres
@@ -53,9 +55,18 @@ This will apply all migrations.
 # Observability
 ## Prometheus
 Access at http://localhost:9000.
+
 Examples can be found at https://github.com/prometheus-net/prometheus-net.
+
+PromQL cheat sheat https://promlabs.com/promql-cheat-sheet/.
+
+Query example which will give the average duration last 5 min.
+```
+rate(outbox_strategy_sum{doneWork='True'}[5m]) / rate(outbox_strategy_count{doneWork='True'}[5m])
+```
+
 ## Jaeger
-Access at http://localhost:9000.
+Access at http://localhost:16686.
 Example of how to do a tracing block
 ```
 using (var activitySerialize = TelemetryTracing.TracingActivitySource.StartActivit("SomeUnique"))

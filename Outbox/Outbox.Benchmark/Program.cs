@@ -19,7 +19,7 @@ namespace Outbox.Benchmark
         [MemoryDiagnoser]
         public class OutboxBenchmark
         {
-            private readonly int seedSize = 500;
+            private readonly int seedSize = 10;
             private readonly string connectionsString = "Host=localhost;Port=5432;Database=outbox;Username=postgres;Password=postgres;Pooling=true;";
             private readonly IOptions<KafkaOptions> kafkaOptions = Options.Create(new KafkaOptions
             {
