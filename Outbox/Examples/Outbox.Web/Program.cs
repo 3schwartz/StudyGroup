@@ -51,11 +51,11 @@ services.AddTransient<ImmutableStrategy>();
 services.AddTransient<ReactiveStrategy>();
 
 services.AddHostedService<SingleRowSequentiallyService>();
-services.AddHostedService<BatchSequentiallyService>();
-services.AddHostedService<ConnectService>();
-services.AddHostedService<ConcurrentService>();
-services.AddHostedService<ImmutableService>();
-services.AddHostedService<ReactService>();
+//services.AddHostedService<BatchSequentiallyService>();
+//services.AddHostedService<ConnectService>();
+//services.AddHostedService<ConcurrentService>();
+//services.AddHostedService<ImmutableService>();
+//services.AddHostedService<ReactService>();
 
 var app = builder.Build();
 
