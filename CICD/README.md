@@ -21,6 +21,8 @@ There are some workflows already defined. The exercise it to
     - Build
     - Run benchmark
 
+See https://github.com/actions/setup-dotnet
+
 ## CD - Argo CD
 
 You need a Kubernetes cluster either in WSL2 or minikube. Also you need to create a acount on Docker Hub where you can push docker images.
@@ -60,33 +62,6 @@ Deploy **Version** before **Message** since **Message** rely on a endpoint from 
 | Version        | chart-version    | https://github.com/3schwartz/StudyGroup.git | CICD/application/chart-version | default   |
 | Message        | chart-message    | https://github.com/3schwartz/StudyGroup.git | CICD/application/chart-message | default   |
 
-
-## Build docker images locally
-
-Build and puhs docker images. Replace `singingman` with own docker hub repository.
-
-```
-cd ./application
-
-docker build -t singingman/message-publish:v1 ./MessagePublish/
-docker build -t singingman/message-consumer:v1 ./MessageConsumer/
-docker build -t singingman/version-endpoint:v1 ./VersionEndpoint/
-
-docker push singingman/message-publish:v1
-docker push singingman/message-consumer:v1
-docker push singingman/version-endpoint:v1
-
-```
-
-## Tools
-
-Get argo cli
-https://argo-cd.readthedocs.io/en/stable/cli_installation/
-
-or use `choco`
-```
-choco install argocd-cli
-```
 
 ## References
 - https://argo-cd.readthedocs.io/en/stable/
