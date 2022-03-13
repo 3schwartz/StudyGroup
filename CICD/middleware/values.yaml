@@ -1,0 +1,33 @@
+kowl:
+  service:
+    type: LoadBalancer
+    port: 8090
+  kowl:
+    config:
+      kafka:
+        brokers:
+          - "{{ .Release.Name }}-kafka:9092"
+
+kafka:
+  deleteTopicEnable: true
+  persistence:
+    size: 250Mi
+  zookeeper:
+    resources:
+      requests: {
+        cpu: 10m,
+        memory: 10Mi
+      }
+    persistence:
+      size: 250Mi
+  externalAccess:
+    enabled: true
+    service:
+      loadBalancerIPs:
+        - localhost
+  provisioning:
+    enabled: true
+    topics:
+      - name: apps
+        partitions: 3
+        replicationFactor: 1

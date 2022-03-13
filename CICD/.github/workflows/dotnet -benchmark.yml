@@ -1,0 +1,28 @@
+name: .NET benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+     - 'application/BenchRepo/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore ./application/BenchRepo/BenchRepo.csproj
+    - name: Build
+      run: dotnet build --no-restore --configuration Release ./application/BenchRepo/BenchRepo.csproj
+    - name: Run
+      run: dotnet run --no-build --no-restore --configuration Release --project ./application/BenchRepo

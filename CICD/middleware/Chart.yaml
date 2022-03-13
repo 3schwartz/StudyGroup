@@ -1,0 +1,17 @@
+apiVersion: v2
+name: middleware
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+dependencies:
+  - name: kafka
+    tags:
+      - middleware
+    version: 14.4.1
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: kowl
+    tags:
+      - middleware
+    version: 2.3.0
+    repository: "https://raw.githubusercontent.com/cloudhut/charts/master/archives"

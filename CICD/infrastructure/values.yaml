@@ -1,0 +1,8 @@
+argo-cd:
+  server:
+    service:
+      type: LoadBalancer
+      loadBalancerIP: localhost
+  config:
+    secret:
+      argocdServerAdminPassword: "admin"

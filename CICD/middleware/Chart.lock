@@ -1,0 +1,9 @@
+dependencies:
+- name: kafka
+  repository: https://charts.bitnami.com/bitnami
+  version: 14.4.1
+- name: kowl
+  repository: https://raw.githubusercontent.com/cloudhut/charts/master/archives
+  version: 2.3.0
+digest: sha256:4cb217ff98040e4da282e2a1985bae2154d3d3d392b0523f94379e9aea8b4182
+generated: "2022-03-13T17:07:32.3665846+01:00"

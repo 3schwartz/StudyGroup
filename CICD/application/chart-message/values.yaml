@@ -1,0 +1,11 @@
+image:
+  repository: singingman
+  pullPolicy: IfNotPresent
+  tag: "v1"
+  publish: message-publish
+  consumer: message-consumer
+
+envs:
+  BOOTSTRAP_SERVER: "middleware-kafka:9092"
+  TOPIC: "apps"
+  ENDPOINT: http://chart-version:8080
