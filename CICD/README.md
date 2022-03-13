@@ -30,7 +30,7 @@ You need a Kubernetes cluster either in WSL2 or minikube. Also you need to creat
 - First setup Argo by following the instructions in below section **Setup Argo**. 
 - Change the version returned by the application `application/VersionEndpoint`.
 - Add username and passwords as secrets Github, https://docs.github.com/en/actions/security-guides/encrypted-secrets
-- Run the workflow `docker-version`
+- Run the workflow `docker-version` - update environment variable `TAG`.
 - Change `repository` and `tag` in `application/chart-version/values.yaml` to point to your Docker Hub repository
 - Push changes
 - Sync the deployment **chart-version** from the Argo UI
