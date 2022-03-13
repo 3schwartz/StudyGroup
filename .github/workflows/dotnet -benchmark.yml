@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
     paths:
-     - 'application/BenchRepo/**'
+     - 'CICD/application/BenchRepo/**'
 
 jobs:
   build:
@@ -21,8 +21,8 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: Restore dependencies
-      run: dotnet restore ./application/BenchRepo/BenchRepo.csproj
+      run: dotnet restore ./CICD/application/BenchRepo/BenchRepo.csproj
     - name: Build
-      run: dotnet build --no-restore --configuration Release ./application/BenchRepo/BenchRepo.csproj
+      run: dotnet build --no-restore --configuration Release ./CICD/application/BenchRepo/BenchRepo.csproj
     - name: Run
-      run: dotnet run --no-build --no-restore --configuration Release --project ./application/BenchRepo
+      run: dotnet run --no-build --no-restore --configuration Release --project ./CICD/application/BenchRepo

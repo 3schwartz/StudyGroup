@@ -10,8 +10,8 @@ on:
   push:
     branches: [ main ]
     paths:
-     - 'application/MessageConsumer/**'
-     - 'application/MessagePublish/**'     
+     - 'CICD/application/MessageConsumer/**'
+     - 'CICD/application/MessagePublish/**'     
 
 env:
   REGISTRY: singingman
@@ -37,13 +37,13 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./application/MessagePublish/
+          context: ./CICD/application/MessagePublish/
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_PUBLISH }}:${{ env.TAG }}
           
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./application/MessagePublish/
+          context: ./CICD/application/MessagePublish/
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_CONSUMER }}:${{ env.TAG }}          
