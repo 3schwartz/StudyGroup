@@ -10,7 +10,7 @@ We will dive into CD, when we deploy Argo CD into a Kubernetes cluster, and from
 
 ## CI - Github actions
 
-Clone TDB and go to folder `CICD`. Checkout branch develop.
+Clone this repository and go to folder `CICD`. Checkout branch develop.
 
 There are some workflows already defined. The exercise it to
 - Create a pipeline which triggers on all code changes in the `application` sub directory. The pipeline should
@@ -56,9 +56,9 @@ Deploy **Version** before **Message** since **Message** rely on a endpoint from 
 
 | Release/Config | Application Name | Repository URL                             | Path                      | Namespace |
 |----------------|------------------|--------------------------------------------|---------------------------|-----------|
-| Middleware     | middleware       | https://github.com/3schwartz/argo-demo.git | middleware                | default   |
-| Version        | chart-version    | https://github.com/3schwartz/argo-demo.git | application/chart-version | default   |
-| Message        | chart-message    | https://github.com/3schwartz/argo-demo.git | application/chart-message | default   |
+| Middleware     | middleware       | https://github.com/3schwartz/StudyGroup.git | CICD/middleware                | default   |
+| Version        | chart-version    | https://github.com/3schwartz/StudyGroup.git | CICD/application/chart-version | default   |
+| Message        | chart-message    | https://github.com/3schwartz/StudyGroup.git | CICD/application/chart-message | default   |
 
 
 ## Build docker images locally
