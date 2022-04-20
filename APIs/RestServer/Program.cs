@@ -1,5 +1,5 @@
+using Common.Models;
 using Microsoft.EntityFrameworkCore;
-using RestServer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

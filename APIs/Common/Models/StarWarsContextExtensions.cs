@@ -1,4 +1,4 @@
-﻿namespace RestServer.Models
+﻿namespace Common.Models
 {
     public static class StarWarsContextExtensions
     {
@@ -6,14 +6,17 @@
         {
             if (!context.Droids.Any())
             {
-                var newhope = new Episode {
-                    Title = "NEWHOPE" 
+                var newhope = new Episode
+                {
+                    Title = "NEWHOPE"
                 };
-                var empire = new Episode { 
+                var empire = new Episode
+                {
                     Title = "EMPIRE"
                 };
-                var jedi = new Episode { 
-                    Title = "JEDI" 
+                var jedi = new Episode
+                {
+                    Title = "JEDI"
                 };
                 var episodes = new List<Episode>{
                     newhope,
@@ -27,7 +30,7 @@
                 var threepio = new Droid
                 {
                     Name = "C-3PO",
-                     Episodes = new List<Episode>
+                    Episodes = new List<Episode>
                     {
                         newhope,
                         empire,

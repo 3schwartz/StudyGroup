@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace RestServer.Models
+namespace Common.Models
 {
     public class StarWarsContext : DbContext
     {

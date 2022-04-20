@@ -1,4 +1,4 @@
-﻿namespace RestServer.Models
+﻿namespace Common.Models
 {
     public class Droid
     {
