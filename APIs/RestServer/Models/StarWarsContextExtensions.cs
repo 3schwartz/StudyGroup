@@ -27,23 +27,23 @@
                 var threepio = new Droid
                 {
                     Name = "C-3PO",
-                    Episodes = new List<Episode>
-                {
-                    newhope,
-                    empire,
-                    jedi
-                },
+                     Episodes = new List<Episode>
+                    {
+                        newhope,
+                        empire,
+                        jedi
+                    },
                     PrimaryFunction = "Protocol"
                 };
                 var artoo = new Droid
                 {
                     Name = "R2-D2",
                     Episodes = new List<Episode>
-                {
-                    newhope,
-                    empire,
-                    jedi
-                },
+                    {
+                        newhope,
+                        empire,
+                        jedi
+                    },
                     PrimaryFunction = "Astromech"
                 };
 

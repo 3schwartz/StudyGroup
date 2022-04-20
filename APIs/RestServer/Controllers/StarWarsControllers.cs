@@ -17,13 +17,32 @@ namespace RestServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Droid>>> GetDroids()
         {
-            return await context.Droids.ToListAsync();
+            var droidsQuerable = context.Droids.Include(d => d.Episodes);
+
+            var droids = new List<Droid>();
+            foreach (var droid in droidsQuerable)
+            {
+                droids.Add(new Droid
+                {
+                    Id = droid.Id,
+                    Name = droid.Name,
+                    PrimaryFunction = droid.PrimaryFunction,
+                    Episodes = droid.Episodes.Select(e => new Episode { Id = e.Id, Title = e.Title}).ToList(),
+                });
+            }
+
+            return droids;
         }
+
+        private class DroidsViewModel : Droid
+        {}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Droid>> GetDroid(int id)
         {
-            var droid = await context.Droids.FindAsync(id);
+            var droid = await context
+                .Droids
+                .FirstAsync(d => d.Id == id);
 
             if (droid == null)
             {
