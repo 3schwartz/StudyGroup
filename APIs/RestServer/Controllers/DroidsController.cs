@@ -1,15 +1,16 @@
 ﻿using Common.Models;
+using Common.Views;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace RestServer.Controllers
 {
     [Route("[controller]")]
-    public class StarWarsController : Controller
+    public class DroidsController : Controller
     {
         private readonly StarWarsContext context;
 
-        public StarWarsController(StarWarsContext context)
+        public DroidsController(StarWarsContext context)
         {
             this.context = context;
         }
@@ -52,15 +53,19 @@ namespace RestServer.Controllers
             return droid;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDroid(int id, Droid droid)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] DroidPrimaryFunctionChange change)
         {
-            if (id != droid.Id)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
-
-            context.Entry(droid).State = EntityState.Modified;
+            var existingDroid = await context.Droids.FindAsync(id);
+            if (existingDroid == null)
+            {
+                return NotFound();
+            }
+            existingDroid.PrimaryFunction = change.PrimaryFunction;
 
             try
             {
@@ -77,8 +82,7 @@ namespace RestServer.Controllers
                     throw;
                 }
             }
-
-            return NoContent();
+            return Ok(existingDroid);
         }
 
         [HttpPost]

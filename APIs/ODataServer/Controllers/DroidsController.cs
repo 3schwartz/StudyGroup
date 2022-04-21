@@ -1,7 +1,6 @@
 ﻿using Common.Models;
+using Common.Views;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Deltas;
-using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +29,7 @@ namespace ODataServer.Controllers
         }
 
         [EnableQuery]
-        public async Task<IActionResult> Patch([FromODataUri] int key, Delta<Droid> droid)
+        public async Task<IActionResult> Patch(int key, [FromBody]DroidPrimaryFunctionChange change)
         {
             if (!ModelState.IsValid)
             {
@@ -41,8 +40,8 @@ namespace ODataServer.Controllers
             {
                 return NotFound();
             }
-
-            droid.Patch(existingDroid);
+            existingDroid.PrimaryFunction = change.PrimaryFunction;
+            
             try
             {
                 await context.SaveChangesAsync();
