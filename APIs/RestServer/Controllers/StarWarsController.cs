@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 namespace RestServer.Controllers
 {
     [Route("[controller]")]
-    public class StarWarsControllers : Controller
+    public class StarWarsController : Controller
     {
         private readonly StarWarsContext context;
 
-        public StarWarsControllers(StarWarsContext context)
+        public StarWarsController(StarWarsContext context)
         {
             this.context = context;
         }
