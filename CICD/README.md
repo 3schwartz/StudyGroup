@@ -36,6 +36,15 @@ You need a Kubernetes cluster either in WSL2 or minikube. Also you need to creat
 - Sync the deployment **chart-version** from the Argo UI
 - Navigate to Kowl at `localhost:8090` and validate the publisher are not publishing message with a new version to topic `apps`.
 
+## Component overview
+
+![](cicd.png)
+
+**MessagePublish** gets version from REST endpoint on application **VersionEndpoint**.
+
+**MessagePublish** then publish message to topic *apps*.
+
+**MessageConsumer** poll message from topic *apps* and write message to console.
 
 ## Setup Argo
 

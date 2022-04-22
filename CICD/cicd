@@ -1,0 +1,19 @@
+@startuml
+
+participant MessagePublish as publisher #red
+participant VersionEndpoint as version #lightgreen
+queue Apps as topic #lightblue
+participant MessageConsumer as consumer #red
+
+activate publisher
+publisher -> version: Get version
+return
+
+publisher -> topic: Publish message
+deactivate publisher
+
+activate consumer
+consumer -> topic: Pull message
+deactivate consumer
+
+@enduml
