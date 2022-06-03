@@ -34,4 +34,4 @@ Discussion of versioning, changes needed in client at changes from backend, batc
 
 Three different frameworks which can be used for streaming are covered. [GraphQL](https://graphql.org/), [gRPC](https://grpc.io/) and [SignalR](https://dotnet.microsoft.com/en-us/apps/aspnet/signalr).
 
-When discussion these frameworks some interesting topics are the community contributing, schema alignment between server and clients and of course performance.
+When discussion these frameworks some interesting topics are the community contribution, schema alignment between server and clients and of course performance.
