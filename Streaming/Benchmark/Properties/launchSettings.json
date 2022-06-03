@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "Benchmark": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "launchUrl": "graphql",
+      "applicationUrl": "https://localhost:7076;http://localhost:9431",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

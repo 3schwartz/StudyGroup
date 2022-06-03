@@ -1,0 +1,10 @@
+﻿query GetDroids {
+  droids {
+    ...DroidInfo
+  }
+}
+
+fragment DroidInfo on Droid {
+    name
+    primaryFunction
+}

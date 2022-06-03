@@ -1,0 +1,12 @@
+﻿subscription SubscribeDroidsAdded {
+  onDroidAdded {
+    ...UpdateInfo
+  }
+}
+
+fragment UpdateInfo on DroidCreated {
+    droid {
+      ...DroidInfo
+    }
+    timestamp
+}

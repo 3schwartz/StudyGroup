@@ -1,0 +1,7 @@
+﻿mutation AddDroid($name: String!, $primaryFunction: String!) {
+  addDroid(input: { name: $name, primaryFunction: $primaryFunction }) {
+    droid {
+      ...DroidInfo
+    }
+  }	
+}

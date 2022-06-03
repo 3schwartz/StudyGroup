@@ -1,0 +1,83 @@
+﻿@page "/"
+@using System.Reactive.Linq
+@using GraphQLClient.DroidClient;
+@inject DroidClient droidClient;
+
+<PageTitle>Droids</PageTitle>
+
+<h1>Droid actions</h1>
+
+<h2>Droids</h2>
+
+<ul>
+    @foreach(var droid in droids)
+    {
+        <li>Name: @droid.Name</li>
+        <li>PrimaryFunction: @droid.PrimaryFunction</li>
+        <br />
+    }
+</ul>
+
+
+<h2>Add Droids</h2>
+
+<ul>
+    <input @bind-value="@name" />
+    <input @bind-value="@primaryFunction" />
+    <button @onclick="SaveDroid">Save</button>
+</ul>
+
+<h2>Added Droids</h2>
+<ul>
+    @foreach(var droid in added)
+    {
+        <li>@droid.Droid.Name : @droid.Droid.PrimaryFunction : @droid.Timestamp.ToString("O")</li>
+    }
+</ul>
+
+
+@code {
+    private IReadOnlyList<IDroidInfo> droids = Array.Empty<IDroidInfo>();
+    private IList<IUpdateInfo> added = new List<IUpdateInfo>();
+    private IDisposable? storeDroids;
+    private IDisposable? storeDroidsAdded;
+
+    private string? name;
+    private string? primaryFunction;
+
+    protected override void OnInitialized()
+    {
+        storeDroids = droidClient.GetDroids
+                        .Watch(StrawberryShake.ExecutionStrategy.CacheFirst)
+                        .Where(t => !t.Errors.Any())
+                        .Select(t => t.Data!.Droids!)
+                        .Subscribe(result =>
+                        {
+                            droids = result;
+                            StateHasChanged();
+                        });
+        
+        storeDroidsAdded = droidClient.SubscribeDroidsAdded
+                        .Watch()
+                        .Subscribe(result =>
+                        {
+                            added.Add(result.Data!.OnDroidAdded);
+                            StateHasChanged();
+                        });
+    }
+
+    public async Task SaveDroid()
+    {
+        await droidClient.AddDroid
+                .ExecuteAsync(name!, primaryFunction!);
+        name = null;
+        primaryFunction = null;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        storeDroids?.Dispose();
+        storeDroidsAdded?.Dispose();
+    }
+}

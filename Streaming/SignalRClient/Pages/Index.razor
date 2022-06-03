@@ -1,0 +1,93 @@
+﻿@page "/"
+@using Models
+@using Microsoft.AspNetCore.SignalR.Client
+@using System.Reactive.Linq;
+@using System.Reactive.Concurrency
+@using System.Threading.Channels;
+@using SignalRShared;
+@inject ILogger<Index> logger;
+
+<PageTitle>Droids</PageTitle>
+
+<h1>Droid actions</h1>
+
+<h2>Droids</h2>
+
+<ul>
+    @foreach(var droid in droids)
+    {
+        <li>Name: @droid.Name</li>
+        <li>PrimaryFunction: @droid.PrimaryFunction</li>
+        <br />
+    }
+</ul>
+
+<h2>Add Droids</h2>
+<ul>
+    <input @bind-value="@name" />
+    <input @bind-value="@primaryFunction" />
+    <button @onclick="SaveDroid">Save</button>
+</ul>
+
+<h2>Added Droids</h2>
+<ul>
+    @foreach(var droid in updates)
+    {
+        <li>@droid.Droid.Name : @droid.Droid.PrimaryFunction : @droid.Timestamp.ToString("O")</li>
+    }
+</ul>
+
+@code {
+    private IList<DroidAddedResponse> updates = new List<DroidAddedResponse>();
+    private IList<Droid> droids = Array.Empty<Droid>();
+    private HubConnection? hubConnection;
+    private string? name;
+    private string? primaryFunction;
+    private IDisposable? subscription;
+    private ChannelReader<DroidAddedResponse>? channel;
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl("http://localhost:5200/droidHub")
+            .Build();
+
+        hubConnection.On<Droid>(Contracts.AddedDroid, (droid) =>
+        {
+            logger.LogInformation("Droid added");
+            this.droids.Add(droid);
+            InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+
+        this.droids = await hubConnection.InvokeAsync<IList<Droid>>(Contracts.GetDroids);
+
+        channel = await hubConnection.StreamAsChannelAsync<DroidAddedResponse>(
+            Contracts.SubscribeDroidsAdded, CancellationToken.None);
+        subscription = channel
+            .ReadAllAsync()
+            .ToObservable()
+            .SubscribeOn(Scheduler.Default)
+            .Subscribe(onNext: (message) =>
+            {
+                logger.LogInformation("Droid added in subscription");
+                updates.Add(message);
+                StateHasChanged();
+            });
+    }
+
+    public async Task SaveDroid()
+    {
+        await hubConnection!.SendAsync(Contracts.AddDroids, new Droid { Name = name, PrimaryFunction = primaryFunction });
+        name = null;
+        primaryFunction = null;
+        StateHasChanged();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection != null) await hubConnection.DisposeAsync();
+        subscription?.Dispose();
+    }
+}

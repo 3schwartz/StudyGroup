@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Bechmark";
+
+import "google/protobuf/empty.proto";
+
+package benchmark;
+
+service BechmarkService{
+	rpc DroidBenchmark(google.protobuf.Empty) returns (Droid);
+}
+
+message Droid {
+	string name = 1;
+	string primaryFunction = 2;
+}

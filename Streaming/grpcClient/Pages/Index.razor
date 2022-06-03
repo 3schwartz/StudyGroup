@@ -1,0 +1,90 @@
+﻿@page "/"
+@using System;
+@using Google.Protobuf.WellKnownTypes
+@using Grpc.Core
+@using Grpc.Net.Client
+@using GrpcService.Shared;
+@using Google.Protobuf;
+@using System.Reactive.Linq;
+@using System.Reactive.Concurrency
+@inject GrpcService.Shared.DroidService.DroidServiceClient client;
+@inject ILogger<Index> logger;
+
+<PageTitle>Droids</PageTitle>
+
+<h1>Droid actions</h1>
+
+<h2>Droids</h2>
+
+<ul>
+    @foreach(var droid in droids)
+    {
+        <li>Name: @droid.Name</li>
+        <li>PrimaryFunction: @droid.PrimaryFunction</li>
+        <br />
+    }
+</ul>
+
+<h2>Add Droids</h2>
+
+<ul>
+    <input @bind-value="@name" />
+    <input @bind-value="@primaryFunction" />
+    <button @onclick="SaveDroid">Save</button>
+</ul>
+
+<h2>Added Droids</h2>
+<ul>
+    @foreach(var droid in updates)
+    {
+        <li>@droid.Droid.Name : @droid.Droid.PrimaryFunction : @droid.Timestamp.ToString("O")</li>
+    }
+</ul>
+
+@code {
+    private IList<Droid> droids = Array.Empty<Droid>();
+    private IList<(DateTime Timestamp, Droid Droid)> updates = new List<(DateTime, Droid)>();
+    private IDisposable? subscription;
+
+    private string? name;
+    private string? primaryFunction;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var droidsResponse = await client.GetDroidsAsync(new Empty());
+
+        droids = droidsResponse.Droids.ToList();
+        
+        subscription = Subscribe(client.SubscribeDroidsAdded(new Empty()).ResponseStream)
+            .ToObservable()
+            .SubscribeOn(Scheduler.Default)
+            .Subscribe(onNext: (message) =>
+            {
+                updates.Add((message.Timestamp.ToDateTime(), message.Droid));
+                StateHasChanged();
+            });
+    }
+
+    private async IAsyncEnumerable<DroidAddedResponse> Subscribe(Grpc.Core.IAsyncStreamReader<DroidAddedResponse> response)
+    {
+        logger.LogInformation("Starting streaming messages.");
+
+        await foreach(var droid in response.ReadAllAsync())
+        {
+            yield return droid;
+        }
+    }
+
+    public async Task SaveDroid()
+    {
+        var response = await client.AddDroidAsync(new Droid { Name = name, PrimaryFunction = primaryFunction });
+        name = null;
+        primaryFunction = null;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        subscription?.Dispose();
+    }
+}

@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Shared";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package droid;
+
+service DroidService{
+	rpc GetDroids(google.protobuf.Empty) returns (DroidsResponse);
+	rpc AddDroid(Droid) returns (Droid);
+	rpc SubscribeDroidsAdded(google.protobuf.Empty) returns (stream DroidAddedResponse);
+}
+
+message Droid {
+	string name = 1;
+	string primaryFunction = 2;
+}
+
+message DroidsResponse {
+	repeated Droid droids = 1;
+}
+
+message DroidAddedResponse{
+	Droid droid = 1;
+	google.protobuf.Timestamp timestamp = 2;
+}

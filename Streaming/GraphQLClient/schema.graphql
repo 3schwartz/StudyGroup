@@ -1,0 +1,39 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  droids: [Droid!]!
+}
+
+type Mutation {
+  addDroid(input: AddDroidInput!): DroidPayload!
+}
+
+type Subscription {
+  onDroidAdded: DroidCreated!
+}
+
+input AddDroidInput {
+  name: String!
+  primaryFunction: String!
+}
+
+type DroidPayload {
+  droid: Droid!
+}
+
+type Droid {
+  name: String!
+  primaryFunction: String!
+}
+
+type DroidCreated {
+  droid: Droid!
+  timestamp: DateTime!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime

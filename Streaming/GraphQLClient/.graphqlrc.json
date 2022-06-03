@@ -1,0 +1,12 @@
+{
+  "schema": "schema.graphql",
+  "documents": "**/**/*.graphql",
+  "extensions": {
+    "strawberryShake": {
+      "name": "DroidClient",
+      "namespace": "GraphQLClient.DroidClient",
+      "url": "https://localhost:7149/graphql/",
+      "dependencyInjection": true
+    }
+  }
+}

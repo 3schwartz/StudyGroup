@@ -1,0 +1,11 @@
+{
+  "schema": "schema.graphql",
+  "documents": "**/**/*.graphql",
+  "extensions": {
+    "strawberryShake": {
+      "name": "BenchmarkClient",
+      "url": "https://localhost:7076/graphql",
+      "dependencyInjection": true
+    }
+  }
+}

@@ -29,3 +29,9 @@ Covering CD with the perspective of using the fantastic tool from [Argo CD](http
 Covering three different backends APIs developed using [REST](https://dotnet.microsoft.com/en-us/apps/aspnet/apis), [OData](https://www.odata.org/) and [GraphQL](https://graphql.org/).
 
 Discussion of versioning, changes needed in client at changes from backend, batching functionality, and general pros- and cons.
+
+## Streaming
+
+Three different frameworks which can be used for streaming are covered. [GraphQL](https://graphql.org/), [gRPC](https://grpc.io/) and [SignalR](https://dotnet.microsoft.com/en-us/apps/aspnet/signalr).
+
+When discussion these frameworks some interesting topics are the community contributing, schema alignment between server and clients and of course performance.

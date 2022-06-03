@@ -1,0 +1,12 @@
+﻿schema {
+  query: Query
+}
+
+type Query {
+  benchmark: Droid!
+}
+
+type Droid {
+  name: String!
+  primaryFunction: String!
+}
