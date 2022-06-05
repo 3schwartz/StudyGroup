@@ -99,6 +99,16 @@ Go back to the subscription - you should now see a event has been received as be
 ```
 
 
+```
+subscription {
+  onMinimal {
+    timestamp
+    message
+  }
+}
+```
+
+
 ### GRPC
 
 To enable Grpc one needs to add below blocks at start up
