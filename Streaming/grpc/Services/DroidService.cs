@@ -9,13 +9,14 @@ namespace grpc.Services
     {
         private readonly IDroidRepository droids;
         private readonly ILogger<DroidService> logger;
-        private readonly Topics topics;
+        private readonly TopicChannels channels;
 
-        public DroidService(IDroidRepository droids, ILogger<DroidService> logger, Topics topics)
+        public DroidService(IDroidRepository droids, ILogger<DroidService> logger,
+            TopicChannels channels)
         {
             this.droids = droids;
             this.logger = logger;
-            this.topics = topics;
+            this.channels = channels;
         }
 
         public override Task<DroidsResponse> GetDroids(Empty request, ServerCallContext context)
@@ -37,7 +38,7 @@ namespace grpc.Services
             return Task.FromResult(response);
         }
 
-        public override Task<GrpcService.Shared.Droid> AddDroid(GrpcService.Shared.Droid request, ServerCallContext context)
+        public override async Task<GrpcService.Shared.Droid> AddDroid(GrpcService.Shared.Droid request, ServerCallContext context)
         {
             var droid = droids.Add(request.Name, request.PrimaryFunction);
 
@@ -45,9 +46,9 @@ namespace grpc.Services
 
             logger.LogInformation("Adding droid to queue");
 
-            topics.Enqueue(grpcDroid);
+            await channels.TryWrite(nameof(DroidService.SubscribeDroidsAdded), grpcDroid);
 
-            return Task.FromResult(grpcDroid);
+            return grpcDroid;
         }
 
         public override async Task SubscribeDroidsAdded(Empty request, 
@@ -56,9 +57,10 @@ namespace grpc.Services
         {
             logger.LogInformation("Starting subscription");
 
-            do
+            var channel = channels.InitSubscription(nameof(DroidService.SubscribeDroidsAdded));
+            try
             {
-                if (topics.TryDequeue(out var droid))
+                await foreach (var droid in channel.Reader.ReadAllAsync(context.CancellationToken))
                 {
                     logger.LogInformation("Sending droid");
 
@@ -67,11 +69,14 @@ namespace grpc.Services
                         Droid = droid,
                         Timestamp = Timestamp.FromDateTime(DateTime.UtcNow)
                     });
-                    continue;
-                };
+                }
+            }
+            catch (OperationCanceledException ex)
+            {
+                logger.LogInformation(ex, "Operation canceled");
+            }
 
-                await Task.Delay(100);
-            } while (!context.CancellationToken.IsCancellationRequested);
+            channels.CompleteSubscription(nameof(DroidService.SubscribeDroidsAdded));
 
             logger.LogInformation("Ending subscription");
         }

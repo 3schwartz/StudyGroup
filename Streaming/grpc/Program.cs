@@ -15,7 +15,7 @@ services.AddCors(options => options.AddDefaultPolicy(
     .AllowAnyHeader()
     ));
 
-services.AddSingleton<Topics>();
+services.AddSingleton<TopicChannels>();
 services.AddSingleton<IDroidRepository, DroidRepository>();
 services.AddGrpc();
 
