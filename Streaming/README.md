@@ -219,9 +219,16 @@ LaunchCount=2  MinIterationCount=20  WarmupCount=2
 
 
 ## References
+
+### GraphQL
 - https://chillicream.com/docs/strawberryshake/get-started
 - https://github.com/ChilliCream/graphql-workshop
+
+### SignalR
 - https://docs.microsoft.com/en-us/aspnet/core/blazor/tutorials/signalr-blazor?view=aspnetcore-6.0&tabs=visual-studio&pivots=server
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-6.0&tabs=visual-studio
 - https://docs.microsoft.com/en-us/aspnet/core/signalr/streaming?view=aspnetcore-6.0
+
+### gRPC
 - https://blog.jetbrains.com/dotnet/2021/07/19/getting-started-with-asp-net-core-and-grpc/
+- https://github.com/bloomrpc/bloomrpc
