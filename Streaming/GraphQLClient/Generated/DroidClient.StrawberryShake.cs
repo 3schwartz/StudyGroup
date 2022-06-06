@@ -4,6 +4,374 @@
 namespace GraphQLClient.DroidClient
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class AddDroidResult : global::System.IEquatable<AddDroidResult>, IAddDroidResult
+    {
+        public AddDroidResult(global::GraphQLClient.DroidClient.IAddDroid_AddDroid addDroid)
+        {
+            AddDroid = addDroid;
+        }
+
+        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid AddDroid { get; }
+
+        public virtual global::System.Boolean Equals(AddDroidResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (AddDroid.Equals(other.AddDroid));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((AddDroidResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * AddDroid.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class AddDroid_AddDroid_DroidPayload : global::System.IEquatable<AddDroid_AddDroid_DroidPayload>, IAddDroid_AddDroid_DroidPayload
+    {
+        public AddDroid_AddDroid_DroidPayload(global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid droid)
+        {
+            Droid = droid;
+        }
+
+        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid Droid { get; }
+
+        public virtual global::System.Boolean Equals(AddDroid_AddDroid_DroidPayload? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Droid.Equals(other.Droid));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((AddDroid_AddDroid_DroidPayload)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Droid.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class AddDroid_AddDroid_Droid_Droid : global::System.IEquatable<AddDroid_AddDroid_Droid_Droid>, IAddDroid_AddDroid_Droid_Droid
+    {
+        public AddDroid_AddDroid_Droid_Droid(global::System.String name, global::System.String primaryFunction)
+        {
+            Name = name;
+            PrimaryFunction = primaryFunction;
+        }
+
+        public global::System.String Name { get; }
+
+        public global::System.String PrimaryFunction { get; }
+
+        public virtual global::System.Boolean Equals(AddDroid_AddDroid_Droid_Droid? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Name.Equals(other.Name)) && PrimaryFunction.Equals(other.PrimaryFunction);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((AddDroid_AddDroid_Droid_Droid)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Name.GetHashCode();
+                hash ^= 397 * PrimaryFunction.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IAddDroidResult
+    {
+        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid AddDroid { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IAddDroid_AddDroid
+    {
+        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid Droid { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IAddDroid_AddDroid_DroidPayload : IAddDroid_AddDroid
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IDroidInfo
+    {
+        public global::System.String Name { get; }
+
+        public global::System.String PrimaryFunction { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IAddDroid_AddDroid_Droid : IDroidInfo
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IAddDroid_AddDroid_Droid_Droid : IAddDroid_AddDroid_Droid
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class GetDroidsResult : global::System.IEquatable<GetDroidsResult>, IGetDroidsResult
+    {
+        public GetDroidsResult(global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> droids)
+        {
+            Droids = droids;
+        }
+
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> Droids { get; }
+
+        public virtual global::System.Boolean Equals(GetDroidsResult? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Droids, other.Droids));
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetDroidsResult)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                foreach (var Droids_elm in Droids)
+                {
+                    hash ^= 397 * Droids_elm.GetHashCode();
+                }
+
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class GetDroids_Droids_Droid : global::System.IEquatable<GetDroids_Droids_Droid>, IGetDroids_Droids_Droid
+    {
+        public GetDroids_Droids_Droid(global::System.String name, global::System.String primaryFunction)
+        {
+            Name = name;
+            PrimaryFunction = primaryFunction;
+        }
+
+        public global::System.String Name { get; }
+
+        public global::System.String PrimaryFunction { get; }
+
+        public virtual global::System.Boolean Equals(GetDroids_Droids_Droid? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Name.Equals(other.Name)) && PrimaryFunction.Equals(other.PrimaryFunction);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetDroids_Droids_Droid)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Name.GetHashCode();
+                hash ^= 397 * PrimaryFunction.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IGetDroidsResult
+    {
+        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> Droids { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IGetDroids_Droids : IDroidInfo
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface IGetDroids_Droids_Droid : IGetDroids_Droids
+    {
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class SubscribeDroidsAddedResult : global::System.IEquatable<SubscribeDroidsAddedResult>, ISubscribeDroidsAddedResult
     {
         public SubscribeDroidsAddedResult(global::GraphQLClient.DroidClient.ISubscribeDroidsAdded_OnDroidAdded onDroidAdded)
@@ -219,14 +587,6 @@ namespace GraphQLClient.DroidClient
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IDroidInfo
-    {
-        public global::System.String Name { get; }
-
-        public global::System.String PrimaryFunction { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface ISubscribeDroidsAdded_OnDroidAdded_Droid : IDroidInfo
     {
     }
@@ -234,497 +594,6 @@ namespace GraphQLClient.DroidClient
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface ISubscribeDroidsAdded_OnDroidAdded_Droid_Droid : ISubscribeDroidsAdded_OnDroidAdded_Droid
     {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class AddDroidResult : global::System.IEquatable<AddDroidResult>, IAddDroidResult
-    {
-        public AddDroidResult(global::GraphQLClient.DroidClient.IAddDroid_AddDroid addDroid)
-        {
-            AddDroid = addDroid;
-        }
-
-        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid AddDroid { get; }
-
-        public virtual global::System.Boolean Equals(AddDroidResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (AddDroid.Equals(other.AddDroid));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((AddDroidResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * AddDroid.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class AddDroid_AddDroid_DroidPayload : global::System.IEquatable<AddDroid_AddDroid_DroidPayload>, IAddDroid_AddDroid_DroidPayload
-    {
-        public AddDroid_AddDroid_DroidPayload(global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid droid)
-        {
-            Droid = droid;
-        }
-
-        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid Droid { get; }
-
-        public virtual global::System.Boolean Equals(AddDroid_AddDroid_DroidPayload? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Droid.Equals(other.Droid));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((AddDroid_AddDroid_DroidPayload)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Droid.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class AddDroid_AddDroid_Droid_Droid : global::System.IEquatable<AddDroid_AddDroid_Droid_Droid>, IAddDroid_AddDroid_Droid_Droid
-    {
-        public AddDroid_AddDroid_Droid_Droid(global::System.String name, global::System.String primaryFunction)
-        {
-            Name = name;
-            PrimaryFunction = primaryFunction;
-        }
-
-        public global::System.String Name { get; }
-
-        public global::System.String PrimaryFunction { get; }
-
-        public virtual global::System.Boolean Equals(AddDroid_AddDroid_Droid_Droid? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Name.Equals(other.Name)) && PrimaryFunction.Equals(other.PrimaryFunction);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((AddDroid_AddDroid_Droid_Droid)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Name.GetHashCode();
-                hash ^= 397 * PrimaryFunction.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IAddDroidResult
-    {
-        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid AddDroid { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IAddDroid_AddDroid
-    {
-        public global::GraphQLClient.DroidClient.IAddDroid_AddDroid_Droid Droid { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IAddDroid_AddDroid_DroidPayload : IAddDroid_AddDroid
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IAddDroid_AddDroid_Droid : IDroidInfo
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IAddDroid_AddDroid_Droid_Droid : IAddDroid_AddDroid_Droid
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetDroidsResult : global::System.IEquatable<GetDroidsResult>, IGetDroidsResult
-    {
-        public GetDroidsResult(global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> droids)
-        {
-            Droids = droids;
-        }
-
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> Droids { get; }
-
-        public virtual global::System.Boolean Equals(GetDroidsResult? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Droids, other.Droids));
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GetDroidsResult)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                foreach (var Droids_elm in Droids)
-                {
-                    hash ^= 397 * Droids_elm.GetHashCode();
-                }
-
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class GetDroids_Droids_Droid : global::System.IEquatable<GetDroids_Droids_Droid>, IGetDroids_Droids_Droid
-    {
-        public GetDroids_Droids_Droid(global::System.String name, global::System.String primaryFunction)
-        {
-            Name = name;
-            PrimaryFunction = primaryFunction;
-        }
-
-        public global::System.String Name { get; }
-
-        public global::System.String PrimaryFunction { get; }
-
-        public virtual global::System.Boolean Equals(GetDroids_Droids_Droid? other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return (Name.Equals(other.Name)) && PrimaryFunction.Equals(other.PrimaryFunction);
-        }
-
-        public override global::System.Boolean Equals(global::System.Object? obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((GetDroids_Droids_Droid)obj);
-        }
-
-        public override global::System.Int32 GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 5;
-                hash ^= 397 * Name.GetHashCode();
-                hash ^= 397 * PrimaryFunction.GetHashCode();
-                return hash;
-            }
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetDroidsResult
-    {
-        public global::System.Collections.Generic.IReadOnlyList<global::GraphQLClient.DroidClient.IGetDroids_Droids> Droids { get; }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetDroids_Droids : IDroidInfo
-    {
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface IGetDroids_Droids_Droid : IGetDroids_Droids
-    {
-    }
-
-    /// <summary>
-    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
-    /// <code>
-    /// subscription SubscribeDroidsAdded {
-    ///   onDroidAdded {
-    ///     __typename
-    ///     ... UpdateInfo
-    ///   }
-    /// }
-    /// 
-    /// fragment UpdateInfo on DroidCreated {
-    ///   droid {
-    ///     __typename
-    ///     ... DroidInfo
-    ///   }
-    ///   timestamp
-    /// }
-    /// 
-    /// fragment DroidInfo on Droid {
-    ///   name
-    ///   primaryFunction
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class SubscribeDroidsAddedSubscriptionDocument : global::StrawberryShake.IDocument
-    {
-        private SubscribeDroidsAddedSubscriptionDocument()
-        {
-        }
-
-        public static SubscribeDroidsAddedSubscriptionDocument Instance { get; } = new SubscribeDroidsAddedSubscriptionDocument();
-        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Subscription;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x73, 0x41, 0x64, 0x64, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x6f, 0x6e, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x41, 0x64, 0x64, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x66, 0x72, 0x61, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x6f, 0x6e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x7d, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x20, 0x7d, 0x20, 0x66, 0x72, 0x61, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x6f, 0x6e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x20, 0x7b, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "521d20f41ca50079158be483262e7e44");
-        public override global::System.String ToString()
-        {
-#if NETSTANDARD2_0
-        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
-#else
-            return global::System.Text.Encoding.UTF8.GetString(Body);
-#endif
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
-    /// <code>
-    /// subscription SubscribeDroidsAdded {
-    ///   onDroidAdded {
-    ///     __typename
-    ///     ... UpdateInfo
-    ///   }
-    /// }
-    /// 
-    /// fragment UpdateInfo on DroidCreated {
-    ///   droid {
-    ///     __typename
-    ///     ... DroidInfo
-    ///   }
-    ///   timestamp
-    /// }
-    /// 
-    /// fragment DroidInfo on Droid {
-    ///   name
-    ///   primaryFunction
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class SubscribeDroidsAddedSubscription : global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription
-    {
-        private readonly global::StrawberryShake.IOperationExecutor<ISubscribeDroidsAddedResult> _operationExecutor;
-        public SubscribeDroidsAddedSubscription(global::StrawberryShake.IOperationExecutor<ISubscribeDroidsAddedResult> operationExecutor)
-        {
-            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ISubscribeDroidsAddedResult);
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
-        {
-            var request = CreateRequest();
-            return _operationExecutor.Watch(request, strategy);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest()
-        {
-            return CreateRequest(null);
-        }
-
-        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return new global::StrawberryShake.OperationRequest(id: SubscribeDroidsAddedSubscriptionDocument.Instance.Hash.Value, name: "SubscribeDroidsAdded", document: SubscribeDroidsAddedSubscriptionDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
-        }
-
-        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
-        {
-            return CreateRequest();
-        }
-    }
-
-    /// <summary>
-    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
-    /// <code>
-    /// subscription SubscribeDroidsAdded {
-    ///   onDroidAdded {
-    ///     __typename
-    ///     ... UpdateInfo
-    ///   }
-    /// }
-    /// 
-    /// fragment UpdateInfo on DroidCreated {
-    ///   droid {
-    ///     __typename
-    ///     ... DroidInfo
-    ///   }
-    ///   timestamp
-    /// }
-    /// 
-    /// fragment DroidInfo on Droid {
-    ///   name
-    ///   primaryFunction
-    /// }
-    /// </code>
-    /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial interface ISubscribeDroidsAddedSubscription : global::StrawberryShake.IOperationRequestFactory
-    {
-        global::System.IObservable<global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -990,25 +859,156 @@ namespace GraphQLClient.DroidClient
     }
 
     /// <summary>
+    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
+    /// <code>
+    /// subscription SubscribeDroidsAdded {
+    ///   onDroidAdded {
+    ///     __typename
+    ///     ... UpdateInfo
+    ///   }
+    /// }
+    /// 
+    /// fragment UpdateInfo on DroidCreated {
+    ///   droid {
+    ///     __typename
+    ///     ... DroidInfo
+    ///   }
+    ///   timestamp
+    /// }
+    /// 
+    /// fragment DroidInfo on Droid {
+    ///   name
+    ///   primaryFunction
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class SubscribeDroidsAddedSubscriptionDocument : global::StrawberryShake.IDocument
+    {
+        private SubscribeDroidsAddedSubscriptionDocument()
+        {
+        }
+
+        public static SubscribeDroidsAddedSubscriptionDocument Instance { get; } = new SubscribeDroidsAddedSubscriptionDocument();
+        public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Subscription;
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x73, 0x41, 0x64, 0x64, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x6f, 0x6e, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x41, 0x64, 0x64, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x66, 0x72, 0x61, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x6f, 0x6e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x20, 0x7b, 0x20, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x7d, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x20, 0x7d, 0x20, 0x66, 0x72, 0x61, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x20, 0x6f, 0x6e, 0x20, 0x44, 0x72, 0x6f, 0x69, 0x64, 0x20, 0x7b, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "521d20f41ca50079158be483262e7e44");
+        public override global::System.String ToString()
+        {
+#if NETSTANDARD2_0
+        return global::System.Text.Encoding.UTF8.GetString(Body.ToArray());
+#else
+            return global::System.Text.Encoding.UTF8.GetString(Body);
+#endif
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
+    /// <code>
+    /// subscription SubscribeDroidsAdded {
+    ///   onDroidAdded {
+    ///     __typename
+    ///     ... UpdateInfo
+    ///   }
+    /// }
+    /// 
+    /// fragment UpdateInfo on DroidCreated {
+    ///   droid {
+    ///     __typename
+    ///     ... DroidInfo
+    ///   }
+    ///   timestamp
+    /// }
+    /// 
+    /// fragment DroidInfo on Droid {
+    ///   name
+    ///   primaryFunction
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class SubscribeDroidsAddedSubscription : global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription
+    {
+        private readonly global::StrawberryShake.IOperationExecutor<ISubscribeDroidsAddedResult> _operationExecutor;
+        public SubscribeDroidsAddedSubscription(global::StrawberryShake.IOperationExecutor<ISubscribeDroidsAddedResult> operationExecutor)
+        {
+            _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(ISubscribeDroidsAddedResult);
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null)
+        {
+            var request = CreateRequest();
+            return _operationExecutor.Watch(request, strategy);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest()
+        {
+            return CreateRequest(null);
+        }
+
+        private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return new global::StrawberryShake.OperationRequest(id: SubscribeDroidsAddedSubscriptionDocument.Instance.Hash.Value, name: "SubscribeDroidsAdded", document: SubscribeDroidsAddedSubscriptionDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default);
+        }
+
+        global::StrawberryShake.OperationRequest global::StrawberryShake.IOperationRequestFactory.Create(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
+        {
+            return CreateRequest();
+        }
+    }
+
+    /// <summary>
+    /// Represents the operation service of the SubscribeDroidsAdded GraphQL operation
+    /// <code>
+    /// subscription SubscribeDroidsAdded {
+    ///   onDroidAdded {
+    ///     __typename
+    ///     ... UpdateInfo
+    ///   }
+    /// }
+    /// 
+    /// fragment UpdateInfo on DroidCreated {
+    ///   droid {
+    ///     __typename
+    ///     ... DroidInfo
+    ///   }
+    ///   timestamp
+    /// }
+    /// 
+    /// fragment DroidInfo on Droid {
+    ///   name
+    ///   primaryFunction
+    /// }
+    /// </code>
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial interface ISubscribeDroidsAddedSubscription : global::StrawberryShake.IOperationRequestFactory
+    {
+        global::System.IObservable<global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult>> Watch(global::StrawberryShake.ExecutionStrategy? strategy = null);
+    }
+
+    /// <summary>
     /// Represents the DroidClient GraphQL client
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class DroidClient : global::GraphQLClient.DroidClient.IDroidClient
     {
-        private readonly global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription _subscribeDroidsAdded;
         private readonly global::GraphQLClient.DroidClient.IAddDroidMutation _addDroid;
         private readonly global::GraphQLClient.DroidClient.IGetDroidsQuery _getDroids;
-        public DroidClient(global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription subscribeDroidsAdded, global::GraphQLClient.DroidClient.IAddDroidMutation addDroid, global::GraphQLClient.DroidClient.IGetDroidsQuery getDroids)
+        private readonly global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription _subscribeDroidsAdded;
+        public DroidClient(global::GraphQLClient.DroidClient.IAddDroidMutation addDroid, global::GraphQLClient.DroidClient.IGetDroidsQuery getDroids, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription subscribeDroidsAdded)
         {
-            _subscribeDroidsAdded = subscribeDroidsAdded ?? throw new global::System.ArgumentNullException(nameof(subscribeDroidsAdded));
             _addDroid = addDroid ?? throw new global::System.ArgumentNullException(nameof(addDroid));
             _getDroids = getDroids ?? throw new global::System.ArgumentNullException(nameof(getDroids));
+            _subscribeDroidsAdded = subscribeDroidsAdded ?? throw new global::System.ArgumentNullException(nameof(subscribeDroidsAdded));
         }
 
         public static global::System.String ClientName => "DroidClient";
-        public global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription SubscribeDroidsAdded => _subscribeDroidsAdded;
         public global::GraphQLClient.DroidClient.IAddDroidMutation AddDroid => _addDroid;
         public global::GraphQLClient.DroidClient.IGetDroidsQuery GetDroids => _getDroids;
+        public global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription SubscribeDroidsAdded => _subscribeDroidsAdded;
     }
 
     /// <summary>
@@ -1017,99 +1017,16 @@ namespace GraphQLClient.DroidClient
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IDroidClient
     {
-        global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription SubscribeDroidsAdded { get; }
-
         global::GraphQLClient.DroidClient.IAddDroidMutation AddDroid { get; }
 
         global::GraphQLClient.DroidClient.IGetDroidsQuery GetDroids { get; }
+
+        global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription SubscribeDroidsAdded { get; }
     }
 }
 
 namespace GraphQLClient.DroidClient.State
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class SubscribeDroidsAddedResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.SubscribeDroidsAddedResult>
-    {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public SubscribeDroidsAddedResultFactory(global::StrawberryShake.IEntityStore entityStore)
-        {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-        }
-
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult);
-        public SubscribeDroidsAddedResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
-        {
-            if (snapshot is null)
-            {
-                snapshot = _entityStore.CurrentSnapshot;
-            }
-
-            if (dataInfo is SubscribeDroidsAddedResultInfo info)
-            {
-                return new SubscribeDroidsAddedResult(MapNonNullableISubscribeDroidsAdded_OnDroidAdded(info.OnDroidAdded, snapshot));
-            }
-
-            throw new global::System.ArgumentException("SubscribeDroidsAddedResultInfo expected.");
-        }
-
-        private global::GraphQLClient.DroidClient.ISubscribeDroidsAdded_OnDroidAdded MapNonNullableISubscribeDroidsAdded_OnDroidAdded(global::GraphQLClient.DroidClient.State.DroidCreatedData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            ISubscribeDroidsAdded_OnDroidAdded returnValue = default !;
-            if (data.__typename.Equals("DroidCreated", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new SubscribeDroidsAdded_OnDroidAdded_DroidCreated(MapNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(data.Droid ?? throw new global::System.ArgumentNullException(), snapshot), data.Timestamp ?? throw new global::System.ArgumentNullException());
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        private global::GraphQLClient.DroidClient.ISubscribeDroidsAdded_OnDroidAdded_Droid MapNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::GraphQLClient.DroidClient.State.DroidData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
-        {
-            ISubscribeDroidsAdded_OnDroidAdded_Droid returnValue = default !;
-            if (data.__typename.Equals("Droid", global::System.StringComparison.Ordinal))
-            {
-                returnValue = new SubscribeDroidsAdded_OnDroidAdded_Droid_Droid(data.Name ?? throw new global::System.ArgumentNullException(), data.PrimaryFunction ?? throw new global::System.ArgumentNullException());
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
-            }
-
-            return returnValue;
-        }
-
-        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
-        {
-            return Create(dataInfo, snapshot);
-        }
-    }
-
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class SubscribeDroidsAddedResultInfo : global::StrawberryShake.IOperationResultDataInfo
-    {
-        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
-        private readonly global::System.UInt64 _version;
-        public SubscribeDroidsAddedResultInfo(global::GraphQLClient.DroidClient.State.DroidCreatedData onDroidAdded, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
-        {
-            OnDroidAdded = onDroidAdded;
-            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
-            _version = version;
-        }
-
-        public global::GraphQLClient.DroidClient.State.DroidCreatedData OnDroidAdded { get; }
-
-        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
-        public global::System.UInt64 Version => _version;
-        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
-        {
-            return new SubscribeDroidsAddedResultInfo(OnDroidAdded, _entityIds, version);
-        }
-    }
-
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class AddDroidResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.AddDroidResult>
     {
@@ -1278,125 +1195,85 @@ namespace GraphQLClient.DroidClient.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class SubscribeDroidsAddedBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>
+    public partial class SubscribeDroidsAddedResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.SubscribeDroidsAddedResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
-        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult> _resultDataFactory;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
-        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        public SubscribeDroidsAddedBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        public SubscribeDroidsAddedResultFactory(global::StrawberryShake.IEntityStore entityStore)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
-            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
-            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
-            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
-            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
 
-        public global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult);
+        public SubscribeDroidsAddedResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
-            (ISubscribeDroidsAddedResult Result, SubscribeDroidsAddedResultInfo Info)? data = null;
-            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
-            if (response.Exception is null)
+            if (snapshot is null)
             {
-                try
-                {
-                    if (response.Body != null)
-                    {
-                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                        {
-                            data = BuildData(dataElement);
-                        }
+                snapshot = _entityStore.CurrentSnapshot;
+            }
 
-                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                        {
-                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                        }
-                    }
-                }
-                catch (global::System.Exception ex)
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
+            if (dataInfo is SubscribeDroidsAddedResultInfo info)
+            {
+                return new SubscribeDroidsAddedResult(MapNonNullableISubscribeDroidsAdded_OnDroidAdded(info.OnDroidAdded, snapshot));
+            }
+
+            throw new global::System.ArgumentException("SubscribeDroidsAddedResultInfo expected.");
+        }
+
+        private global::GraphQLClient.DroidClient.ISubscribeDroidsAdded_OnDroidAdded MapNonNullableISubscribeDroidsAdded_OnDroidAdded(global::GraphQLClient.DroidClient.State.DroidCreatedData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            ISubscribeDroidsAdded_OnDroidAdded returnValue = default !;
+            if (data.__typename.Equals("DroidCreated", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new SubscribeDroidsAdded_OnDroidAdded_DroidCreated(MapNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(data.Droid ?? throw new global::System.ArgumentNullException(), snapshot), data.Timestamp ?? throw new global::System.ArgumentNullException());
             }
             else
             {
-                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
-                {
-                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
-                }
-                else
-                {
-                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
-                }
+                throw new global::System.NotSupportedException();
             }
 
-            return new global::StrawberryShake.OperationResult<ISubscribeDroidsAddedResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+            return returnValue;
         }
 
-        private (ISubscribeDroidsAddedResult, SubscribeDroidsAddedResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        private global::GraphQLClient.DroidClient.ISubscribeDroidsAdded_OnDroidAdded_Droid MapNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::GraphQLClient.DroidClient.State.DroidData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
-            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
-            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
-            _entityStore.Update(session =>
+            ISubscribeDroidsAdded_OnDroidAdded_Droid returnValue = default !;
+            if (data.__typename.Equals("Droid", global::System.StringComparison.Ordinal))
             {
-                snapshot = session.CurrentSnapshot;
-            });
-            var resultInfo = new SubscribeDroidsAddedResultInfo(DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "onDroidAdded")), entityIds, snapshot.Version);
-            return (_resultDataFactory.Create(resultInfo), resultInfo);
+                returnValue = new SubscribeDroidsAdded_OnDroidAdded_Droid_Droid(data.Name ?? throw new global::System.ArgumentNullException(), data.PrimaryFunction ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
         }
 
-        private global::GraphQLClient.DroidClient.State.DroidCreatedData DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded(global::System.Text.Json.JsonElement? obj)
+        global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
         {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
+            return Create(dataInfo, snapshot);
+        }
+    }
 
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("DroidCreated", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::GraphQLClient.DroidClient.State.DroidCreatedData(typename, droid: DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "droid")), timestamp: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "timestamp")));
-            }
-
-            throw new global::System.NotSupportedException();
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class SubscribeDroidsAddedResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    {
+        private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
+        private readonly global::System.UInt64 _version;
+        public SubscribeDroidsAddedResultInfo(global::GraphQLClient.DroidClient.State.DroidCreatedData onDroidAdded, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        {
+            OnDroidAdded = onDroidAdded;
+            _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
+            _version = version;
         }
 
-        private global::GraphQLClient.DroidClient.State.DroidData DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::System.Text.Json.JsonElement? obj)
+        public global::GraphQLClient.DroidClient.State.DroidCreatedData OnDroidAdded { get; }
+
+        public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
+        public global::System.UInt64 Version => _version;
+        public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            var typename = obj.Value.GetProperty("__typename").GetString();
-            if (typename?.Equals("Droid", global::System.StringComparison.Ordinal) ?? false)
-            {
-                return new global::GraphQLClient.DroidClient.State.DroidData(typename, name: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), primaryFunction: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "primaryFunction")));
-            }
-
-            throw new global::System.NotSupportedException();
-        }
-
-        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _stringParser.Parse(obj.Value.GetString()!);
-        }
-
-        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
-        {
-            if (!obj.HasValue)
-            {
-                throw new global::System.ArgumentNullException();
-            }
-
-            return _dateTimeParser.Parse(obj.Value.GetString()!);
+            return new SubscribeDroidsAddedResultInfo(OnDroidAdded, _entityIds, version);
         }
     }
 
@@ -1623,20 +1500,140 @@ namespace GraphQLClient.DroidClient.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class DroidCreatedData
+    public partial class SubscribeDroidsAddedBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>
     {
-        public DroidCreatedData(global::System.String __typename, global::GraphQLClient.DroidClient.State.DroidData? droid = default !, global::System.DateTimeOffset? timestamp = default !)
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult> _resultDataFactory;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.DateTimeOffset> _dateTimeParser;
+        private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
+        public SubscribeDroidsAddedBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
+            _resultDataFactory = resultDataFactory ?? throw new global::System.ArgumentNullException(nameof(resultDataFactory));
+            _dateTimeParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.DateTimeOffset>("DateTime") ?? throw new global::System.ArgumentException("No serializer for type `DateTime` found.");
+            _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
+        }
+
+        public global::StrawberryShake.IOperationResult<ISubscribeDroidsAddedResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        {
+            (ISubscribeDroidsAddedResult Result, SubscribeDroidsAddedResultInfo Info)? data = null;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
+            if (response.Exception is null)
+            {
+                try
+                {
+                    if (response.Body != null)
+                    {
+                        if (response.Body.RootElement.TryGetProperty("data", out global::System.Text.Json.JsonElement dataElement) && dataElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                        {
+                            data = BuildData(dataElement);
+                        }
+
+                        if (response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                        {
+                            errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                        }
+                    }
+                }
+                catch (global::System.Exception ex)
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(ex.Message, exception: ex, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+            else
+            {
+                if (response.Body != null && response.Body.RootElement.TryGetProperty("errors", out global::System.Text.Json.JsonElement errorsElement))
+                {
+                    errors = global::StrawberryShake.Json.JsonErrorParser.ParseErrors(errorsElement);
+                }
+                else
+                {
+                    errors = new global::StrawberryShake.IClientError[]{new global::StrawberryShake.ClientError(response.Exception.Message, exception: response.Exception, extensions: new global::System.Collections.Generic.Dictionary<global::System.String, global::System.Object?>{{"body", response.Body?.RootElement.ToString()}})};
+                }
+            }
+
+            return new global::StrawberryShake.OperationResult<ISubscribeDroidsAddedResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+        }
+
+        private (ISubscribeDroidsAddedResult, SubscribeDroidsAddedResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        {
+            var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
+            global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            _entityStore.Update(session =>
+            {
+                snapshot = session.CurrentSnapshot;
+            });
+            var resultInfo = new SubscribeDroidsAddedResultInfo(DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "onDroidAdded")), entityIds, snapshot.Version);
+            return (_resultDataFactory.Create(resultInfo), resultInfo);
+        }
+
+        private global::GraphQLClient.DroidClient.State.DroidCreatedData DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("DroidCreated", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQLClient.DroidClient.State.DroidCreatedData(typename, droid: DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "droid")), timestamp: DeserializeNonNullableDateTimeOffset(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "timestamp")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::GraphQLClient.DroidClient.State.DroidData DeserializeNonNullableISubscribeDroidsAdded_OnDroidAdded_Droid(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            var typename = obj.Value.GetProperty("__typename").GetString();
+            if (typename?.Equals("Droid", global::System.StringComparison.Ordinal) ?? false)
+            {
+                return new global::GraphQLClient.DroidClient.State.DroidData(typename, name: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "name")), primaryFunction: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "primaryFunction")));
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::System.String DeserializeNonNullableString(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _stringParser.Parse(obj.Value.GetString()!);
+        }
+
+        private global::System.DateTimeOffset DeserializeNonNullableDateTimeOffset(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            return _dateTimeParser.Parse(obj.Value.GetString()!);
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
+    public partial class DroidPayloadData
+    {
+        public DroidPayloadData(global::System.String __typename, global::GraphQLClient.DroidClient.State.DroidData? droid = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Droid = droid;
-            Timestamp = timestamp;
         }
 
         public global::System.String __typename { get; }
 
         public global::GraphQLClient.DroidClient.State.DroidData? Droid { get; }
-
-        public global::System.DateTimeOffset? Timestamp { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
@@ -1657,17 +1654,20 @@ namespace GraphQLClient.DroidClient.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
-    public partial class DroidPayloadData
+    public partial class DroidCreatedData
     {
-        public DroidPayloadData(global::System.String __typename, global::GraphQLClient.DroidClient.State.DroidData? droid = default !)
+        public DroidCreatedData(global::System.String __typename, global::GraphQLClient.DroidClient.State.DroidData? droid = default !, global::System.DateTimeOffset? timestamp = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
             Droid = droid;
+            Timestamp = timestamp;
         }
 
         public global::System.String __typename { get; }
 
         public global::GraphQLClient.DroidClient.State.DroidData? Droid { get; }
+
+        public global::System.DateTimeOffset? Timestamp { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
@@ -1714,9 +1714,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::GraphQLClient.DroidClient.State.DroidClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.AddDroidMutation>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.GetDroidsQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.DroidClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.IDroidClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::GraphQLClient.DroidClient.State.DroidClientStoreAccessor>("DroidClient", services, serviceCollection);
@@ -1753,13 +1753,6 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>, global::GraphQLClient.DroidClient.State.SubscribeDroidsAddedResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>, global::GraphQLClient.DroidClient.State.SubscribeDroidsAddedBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.WebSockets.IWebSocketConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.IAddDroidResult>, global::GraphQLClient.DroidClient.State.AddDroidResultFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.IAddDroidResult>>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.IAddDroidMutation>(sp));
@@ -1774,6 +1767,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQLClient.DroidClient.IGetDroidsResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.IGetDroidsResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.IGetDroidsResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.GetDroidsQuery>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.IGetDroidsQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.GetDroidsQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>, global::GraphQLClient.DroidClient.State.SubscribeDroidsAddedResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>, global::GraphQLClient.DroidClient.State.SubscribeDroidsAddedBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.WebSockets.IWebSocketConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::GraphQLClient.DroidClient.ISubscribeDroidsAddedResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.ISubscribeDroidsAddedSubscription>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.SubscribeDroidsAddedSubscription>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::GraphQLClient.DroidClient.State.DroidClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.DroidClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::GraphQLClient.DroidClient.IDroidClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::GraphQLClient.DroidClient.DroidClient>(sp));
