@@ -6,7 +6,7 @@ A demo client and server application are given in the examples for each of these
 
 The exercise will focus on the server part and the clients are mainly to have a visual interpretation and have some interactive to play around with. The UI is simple so just start a server and client and I bet you get what can be done.
 
-Focus will also be on the stream between the server and client and how each frameworks can be used *(you can check out [APIs](https://github.com/3schwartz/StudyGroup/tree/main/APIs) if you want to only focus on API's)*.
+Focus will also be on the stream between the server and client and how each frameworks can be used *(you can check out [APIs](https://github.com/3schwartz/StudyGroup/tree/main/APIs) if you want to only focus on request-response api's)*.
 
 ## MVP's
 
