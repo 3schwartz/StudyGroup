@@ -1,103 +1,99 @@
 # Streaming
 
-GraphQL, SignalR and gRPC will be covered. For each of the framework both a server and client is given in the examples. This workshop will only cover the server parts, and the clients are given to be able to play around interactively and simulate server and UI use cases.
+Three awesome frameworks will be covered: GraphQL, SignalR and gRPC. 
 
-Each UI consist of three blocks
-- Rendering objects
-  In this workshop one is just rendering current state of Droids at start up.
-- Updating backend state
-  In this workshop one is adding a Droid.
-- Stream from backend to frontend
-  On every update made, the stream will publish the update.
+A demo client and server application are given in the examples for each of these. They all solve the some problem - how the list Droids, add a Droid and stream Droid changes. 
 
-The streaming block is what we will have focus on. The other two are just given to interactively trigger updates from the stream.
+The exercise will focus on the server part and the clients are mainly to have a visual interpretation and have some interactive to play around with. The UI is simple so just start a server and client and I bet you get what can be done.
+
+Focus will also be on the stream between the server and client and how each frameworks can be used *(you can check out [APIs](https://github.com/3schwartz/StudyGroup/tree/main/APIs) if you want to only focus on API's)*.
 
 ## MVP's
 
+Before exercises are given the below sections give a MVP for each framework how to get a stream up and running in a web application.
+
 ### GraphQL
 
-To enable streaming from GraphQL one needs to add below blocks at start up
+Start by install nuget package `HotChocolate.AspNetCore` *(when written version 12.10.0 was used)*.
 
-````
-services.AddGraphQLServer()
-    .AddSubscriptionType<Subscription>()
-    .AddInMemorySubscriptions();
+In `Program.cs` dependency inject services, register web sockets and map GraphQL endpoints.
 
+```
 ...
+builder.Services.AddGraphQLServer()
+    //.ConfigureSchema(opts => opts.ModifyOptions(s => s.StrictValidation = false)) // Not working with Banana Cake Pop
+    .AddQueryType<DummyQuery>()
+    .AddSubscriptionType<Subscription>()
+    .AddInMemorySubscriptions(); // Add internal messaging system
+...
+// Enable web sockets
 app.UseWebSockets();
+
+// Map endpoints
 app.MapGraphQL();
-````
+...
+```
 
-By this one have enabled usages of websocket and added internal in memory messaging system. The `Subscription` class has a implementation of a simple subscription.
+In the above a subscriptions was added by `.AddSubscriptionType<Subscription>()`. Now create the class with one method as below
+
 
 ```
-public class Subscription
-{
-    [Subscribe]
-    [Topic]
-    public Task<DroidCreated> OnDroidAddedAsync(
-        [EventMessage]Droid droid)
+    public class Subscription
     {
-        return Task.FromResult(new DroidCreated(droid, DateTime.UtcNow));
+        [Subscribe]
+        [Topic]
+        public Task<Minimal> OnMinimal([EventMessage]DateTime timestamp)
+        {
+            return Task.FromResult(new Minimal(Timestamp: timestamp, "Hello"));
+        }
+
+        public record Minimal(DateTime Timestamp, string Message);
     }
-    public record DroidCreated(Droid Droid, DateTime Timestamp);
-}
 ```
 
-`[Subscribe]` tells GraphQL to map this as a subscription. `[Topic]` is used for the internal messaging system to partition messages on topics. Hence messages published to `OnDroidAddedAsync` will be send to subscribes of above subscription.
+`[Subscribe]` tells GraphQL to map this as a subscription. `[Topic]` is used for the internal messaging system to partition messages on topics. Hence messages published to `OnMinimal` will be send to subscribes of above subscription.
 
-To trigger the event one can call the above method as below - in below example events are send on every time a droid is added:
-```
-public async Task<DroidPayload> AddDroidAsync(
-    AddDroidInput input,
-    [Service]IDroidRepository droids,
-    [Service]ITopicEventSender eventSender)
-{
-    Droid droid = droids.Add(input.Name, input.PrimaryFunction);
-    await eventSender.SendAsync(nameof(Subscription.OnDroidAddedAsync), droid);
-    return new DroidPayload(droid);
-}
-```
+I haven't succeeded running Banana Cake Pop, the integrated GraphQL UI, without a query. Because of this I have created a dummy query as
 
-To see this in action, start the GraphQL project and from Banana Cake Pop *(UI rendered at start up)* execute
-```subscription {
-  onDroidAdded {
-    droid {
-      name
-      primaryFunction
+```
+    public class DummyQuery {
+        public int Foo { get; set; } = 1;
     }
-    timestamp
-  }
-}
 ```
 
-Initially nothing will happen. Now in another window execute
+To actually have the subscription rendering something create a background service as below - it will every 5 second publish a message to the internal topic `OnMinimal`. It is the internal topic our subscription is listening to. It is doing this using the `ITopicEventSender` and it is exactly this interface one needs to inject in your application where you want to stream events.
+
 ```
-mutation {
-  addDroid(input: { name: "R5-D4", primaryFunction: "Astromech" }) {
-    droid {
-      name
-      primaryFunction
+    public class SendSomething : BackgroundService
+    {
+        private readonly ITopicEventSender eventSender;
+
+        public SendSomething(ITopicEventSender eventSender)
+        {
+            this.eventSender = eventSender;
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                await eventSender.SendAsync(nameof(Subscription.OnMinimal), DateTime.UtcNow, stoppingToken);
+
+                await Task.Delay(5000, CancellationToken.None);
+            }
+        }
     }
-  }
-}
 ```
 
-Go back to the subscription - you should now see a event has been received as below.
+Remember to register the background service in `Program.cs`.
+
 ```
-{
-  "data": {
-    "onDroidAdded": {
-      "droid": {
-        "name": "R5-D4",
-        "primaryFunction": "Astromech"
-      },
-      "timestamp": "2022-05-28T15:59:48.975Z"
-    }
-  }
-}
+builder.Services.AddHostedService<SendSomething>();
 ```
 
+Before starting the application add `launchUrl` as `graphql` in `launchSettings.json`. Then start the application and Banana Cake Pop will be rendering.
+
+To see the subscription in action run below query
 
 ```
 subscription {
@@ -108,72 +104,200 @@ subscription {
 }
 ```
 
+You should now see a new event received every 5 second.
 
-### GRPC
+### gRPC
 
-To enable Grpc one needs to add below blocks at start up
+Start by install nuget package `Grpc.AspNetCore` *(when written version 2.46.0 was used)*.
 
-````
-services.AddGrpc();
-...
-app.MapGrpcService<GrpcService>();
-````
+gRPC services are generated from proto-files - these are the schema files. Create a folder `Protos` and within it add a file named `minimal.proto` with below content.
 
-Also, one needs to add a `.proto` file to the project - this is the schema. A minimal example below would be
 
 ```
 syntax = "proto3";
 
-option csharp_namespace = "GrpcService.Minimal";
+option csharp_namespace = "Generated";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
-package benchmark;
+package minimal;
 
-service GrpcService{
-	rpc DoMinimal(google.protobuf.Empty) returns (Minimal);
+service MinimalService{
+	rpc SubscribeMinimal(google.protobuf.Empty) returns (stream MinimalResponse);
 }
 
-message Minimal {
-	string name = 1;
+message MinimalResponse{
+	google.protobuf.Timestamp timestamp = 1;
+	string message = 2;
 }
 ```
-I'm defining one call, `DoMinimal`, from my service `GrpcService`. This doesn't require any input and returns a `Minimal` object.
 
-Adding nuget package `Grpc.AspNetCore`, add below to `.csproj` and afterwards build the project. Then all services and classes are generated.
+A service `MinimalService` is created which returns a `MinimalResponse` with a timestamp and message. See [Language Guide (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) for proto-file details.
+
+In the `.csproj` file add below and hereafter build the project. Services described in proto-files will then be autogenerated.
 ```
-<ItemGroup>
-	<Protobuf Include="Protos\minimal.proto"/>
-</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\minimal.proto" GrpcService="Server"/>
+	</ItemGroup>
 ```
 
-The last part is to build a simple service, which overrides the call given in the `proto`-file.
+Now our stream service can be created. By overriding the methods from autogenerated files we can specify that on subscriptions we will every 5 second stream a message to the client.
 ```
-internal class GrpcService : MinimalService.MinimalServiceBase
-{
-    public override Task<Droid> DoMinimal(Empty request, ServerCallContext context)
+    public class MinimalService : Generated.MinimalService.MinimalServiceBase
     {
-        return Task.FromResult(new Minimal { Name = "Something");
+        public override async Task SubscribeMinimal(Empty request,
+            IServerStreamWriter<MinimalResponse> responseStream,
+            ServerCallContext context)
+        {
+            while (!context.CancellationToken.IsCancellationRequested)
+            {
+                await responseStream.WriteAsync(new MinimalResponse
+                {
+                    Timestamp = Timestamp.FromDateTime(DateTime.UtcNow),
+                    Message = "Hello"
+                });
+
+                await Task.Delay(5000, CancellationToken.None);
+            }
+        }
     }
-}
 ```
 
-To validate everything works I use [bloomrpc](https://github.com/bloomrpc/bloomrpc). By adding the `proto`-file and invoking without any body, I'm getting response
+Now when the service is created add below in `Program.cs`
+
+````
+services.AddGrpc();
+...
+app.MapGrpcService<MinimalService>();
+````
+
+gRPC are using HTTP2 so we need to tell the Kestrel server to use HTTP2. In `appsettings.json` add
+```
+  "Kestrel": {
+    "EndpointDefaults": {
+      "Protocols": "Http2"
+    }
+  }
+```
+
+Now start when starting the application you have a gRPC server running :-)
+
+To validate everything works I use [Bloomrpc](https://github.com/bloomrpc/bloomrpc). Start the program, locate the proto-file and target correct port. Start the streaming and every 5 second you should in the BloomRPC UI receive a response like
+
+
 ```
 {
-  "minimal": "Something"
+  "timestamp": {
+    "seconds": "1654624418",
+    "nanos": 48634000
+  },
+  "message": "Hello"
 }
 ```
-
 
 ### SignalR
 
+SignalR are part of the standard SDK so you don't need to add any nuget packages to get the server up and running. SignalR relies on `Hub`'s so the first thing to do is to create a class which inherits from this class. Methods within a class inherited from Hub will be mapped to endpoints.
+
+To have a stream mapped, either return a `ChannelReader<T>` or a `IAsyncEnumerable`. In the below code I'm returning a `ChannelReader<T>` and then every 5 second writing to the stream.
+
+```
+    public class MinimalHub : Hub
+    {
+        public ChannelReader<MinimalResponse> SubscribeMinimal(CancellationToken ct)
+        {
+            var channel = Channel.CreateUnbounded<MinimalResponse>();
+
+            _ = WriteAsync(channel.Writer, ct);
+
+            return channel.Reader;
+        }
+
+        private static async Task WriteAsync(ChannelWriter<MinimalResponse> writer, CancellationToken ct)
+        {
+            while (!ct.IsCancellationRequested)
+            {
+                await writer.WriteAsync(new MinimalResponse("Hello", DateTime.UtcNow), ct);
+
+                await Task.Delay(5000, CancellationToken.None);
+            }
+
+            writer.Complete();
+        }
+    }
+
+    public record MinimalResponse(string Message, DateTime Timestamp);
+```
+
+Now when the Hub is created add below in `Program.cs` to map `MinimalHub` at path `/minimal`
+
+```
+builder.Services.AddSignalR();
+...
+app.MapHub<MinimalHub>("/minimal");
+```
+
+Now start when starting the application you have a SignalR server running :-)
+
+
+I haven't found any nice client tool so for demo purpose I suggest create a client in a background service. 
+
+Start by install nuget package `Microsoft.AspNetCore.SignalR.Client` *(when written version 6.0.5 was used)*.
+
+Now create a client in a background service which subscribes to the server stream and log output *(change port to the correct from `launchSettings.json`)*.
+
+```
+    public class MinimalClient : BackgroundService
+    {
+        private readonly ILogger<MinimalClient> logger;
+        private readonly IHostLifetime lifetime;
+
+        public MinimalClient(ILogger<MinimalClient> logger, IHostLifetime lifetime)
+        {
+            this.logger = logger;
+            this.lifetime = lifetime;
+        }
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            await lifetime.WaitForStartAsync(stoppingToken);
+
+            var connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:5271/minimal")
+                .Build();
+
+            await connection.StartAsync(stoppingToken);
+
+            var stream = connection.StreamAsync<MinimalResponse>(nameof(MinimalHub.SubscribeMinimal), stoppingToken);
+
+            await foreach (var response in stream)
+            {
+                logger.LogInformation("Received: {@Response}", response);
+            }
+        }
+    }
+```
+
+Add background service and logging to `Program.cs`
+
+```
+builder.Services.AddLogging();
+builder.Services.AddHostedService<MinimalClient>();
+
+```
+
+Now when you start the application the client will subscribe to the server stream and you should in console output see messages as
+
+````
+Received: MinimalResponse { Message = Hello, Timestamp = 6/7/2022 6:11:54 PM }
+
+````
 
 ## Exercises
 
 For each of the frameworks add a new subscription/stream to both the server and client applications. Follow below steps
 
-- Add a HostedService which every X second publish a new message
+- Add a HostedService which every X second publish a new message. You can look at examples from the MVP sections above.
 - Add necessary updates to schemas. 
     
     When updating GraphQL one needs relevant CLI tools, see https://chillicream.com/docs/strawberryshake/get-started/console#step-1-add-the-strawberry-shake-cli-tools.
@@ -194,7 +318,9 @@ It is always fun to Benchmark - therefore I have created a project `Benchmark`, 
 - gRPC
 - SignalR
 
-I have not tested streaming but just a simple call with a object returned. The Benchmark is running as a background service and calling endpoints on same server. The RTT is hence negligible. There are also disturbance running test like this, however it is fun and gives some ideas how one can performance test APIs.
+I have not tested streaming but just a simple call with a object returned. The Benchmark is running as a background service and calling endpoints on same server. The RTT is hence negligible. 
+
+It is fun and gives some ideas how one can performance test APIs :-)
 
 Results are given below.
 
@@ -217,6 +343,7 @@ LaunchCount=2  MinIterationCount=20  WarmupCount=2
 |          Grpc | 505.8 μs | 33.91 μs | 106.17 μs | 517.7 μs |  -0.0293 |    2.197 |  2.24 |    0.53 |     11 KB |
 |       SignalR | 261.3 μs |  6.19 μs |  19.64 μs | 262.1 μs |   0.1287 |    1.904 |  1.15 |    0.13 |      2 KB |
 
+Interesting standard Controller API's have the best performance where gRPC showing the worst - which quite much contradicts what I would have expected. For sure it could be fun to dive deeper into this.
 
 ## References
 
