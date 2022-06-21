@@ -52,6 +52,7 @@ You need a Kubernetes cluster either in WSL2 or minikube. Also you need to creat
 helm dependency update ./infrastructure/
 helm upgrade --install infrastructure ./infrastructure
 ```
+Now Argo UI is available as `http://localhost:80`.
 
 ### Setup continous deployment in Argo UI
  
