@@ -8,7 +8,7 @@ dependencies:
   - name: kafka
     tags:
       - middleware
-    version: 14.4.1
+    version: 14.9.0
     repository: "https://charts.bitnami.com/bitnami"
   - name: kowl
     tags:
